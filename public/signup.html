@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GaragemRC — Cadastre-se</title>
+  <style>
+    body{font-family:Inter,system-ui,Arial;padding:24px;max-width:420px;margin:auto}
+    h1{font-weight:700;font-size:1.4rem;margin-bottom:12px}
+    form{display:grid;gap:10px;margin-top:12px}
+    input{padding:10px;border:1px solid #ddd;border-radius:8px}
+    button{padding:10px;border:0;border-radius:8px;cursor:pointer}
+    .primary{background:#111;color:#fff}
+    .google{background:#fff;border:1px solid #ddd}
+    .muted{color:#666;font-size:.9rem}
+    .msg{margin-top:10px;font-size:.95rem}
+    .msg.error{color:#b00020}
+    .msg.ok{color:#0b7}
+  </style>
+</head>
+<body>
+  <h1>Crie sua conta</h1>
+  <p class="muted">Cadastre-se para anunciar e acompanhar seus favoritos.</p>
+
+  <form id="signup-form">
+    <input id="email" type="email" placeholder="Seu e-mail" required />
+    <input id="display_name" type="text" placeholder="Nome de exibição" minlength="2" maxlength="50" required />
+    <input id="password" type="password" placeholder="Senha" minlength="6" required />
+    <button class="primary" type="submit">Criar conta</button>
+  </form>
+
+  <p style="margin:10px 0;text-align:center">ou</p>
+  <button id="google-btn" class="google">Cadastre-se com o Google</button>
+
+  <div id="msg" class="msg"></div>
+
+  <script src="/env.js"></script>
+  <script type="module" src="/js/signup.js"></script>
+</body>
+</html>

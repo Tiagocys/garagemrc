@@ -1,0 +1,22 @@
+{
+  "name": "garagemrc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "dotenv": "^17.2.1",
+    "wrangler": "^4.30.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "wrangler pages dev public --port 8788",
+    "deploy": "wrangler pages deploy public",
+    "cf:login": "wrangler login",
+    "generate-env": "node scripts/generate-env.mjs",
+    "prebuild": "npm run generate-env",
+    "build": "echo \"static build OK\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

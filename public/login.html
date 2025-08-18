@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrar — GaragemRC</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <style>
+    .signup{
+        text-align: center;margin-top: 20px;
+        width: 100%;
+        width: auto;
+        display: flex;
+        
+    }
+    .signup a {
+        text-decoration: none;
+        color: black;
+        font-size: 1rem;
+        margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="auth-wrap">
+    <h1 class="auth-title">Entrar</h1>
+    <p class="auth-muted">Acesse sua conta para anunciar e gerenciar seus veículos.</p>
+
+    <form id="login-form" class="auth-form" autocomplete="on">
+      <input id="email" class="auth-input" type="email" placeholder="Seu e-mail" required />
+      <input id="password" class="auth-input" type="password" placeholder="Senha" minlength="6" required />
+      <button type="submit" class="auth-btn primary">Entrar</button>
+    </form>
+
+    <p style="margin:10px 0;text-align:center">ou</p>
+    <button id="google-btn" class="auth-btn google">Entrar com o Google</button>
+    <div class="signup">
+        <a href="signup.html">Ainda não tenho uma conta</a> | <a href="">Esqueci a senha</a>
+    </div>
+
+    <div id="msg" class="auth-msg"></div>
+  </main>
+
+  <script src="/env.js"></script>
+  <script type="module" src="/js/nav.js"></script>
+  <script type="module" src="/js/login.js"></script>
+</body>
+</html>

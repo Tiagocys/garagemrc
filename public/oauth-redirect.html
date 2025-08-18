@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autenticando…</title>
+  <style>body{font-family:Inter,system-ui,Arial;padding:24px;max-width:420px;margin:auto}</style>
+</head>
+<body>
+  <p>Processando login…</p>
+  <script src="/env.js"></script>
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+    const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
+
+    // Garante que o fragmento da URL (código do OAuth) seja processado e a sessão salva
+    await supabase.auth.getSession();
+
+    // Aqui você pode redirecionar para a home ou uma página de perfil
+    window.location.replace("/");
+  </script>
+</body>
+</html>
