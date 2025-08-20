@@ -1,6 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { translateSupabaseError } from "./supabase-errors.js";
-import { ensureRecaptcha, getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js";
+import { ensureRecaptcha, getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js?v=3"; // cache-bust
 
 
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
@@ -11,7 +11,7 @@ const SITE_KEY = window.__ENV.RECAPTCHA_SITE_KEY;
 ensureRecaptcha(SITE_KEY).catch(() => {});
 
 function show(type, text) {
-  msg.className = `msg ${type}`;
+  msg.className = `auth-msg ${type}`;
   msg.textContent = text;
 }
 
@@ -23,7 +23,7 @@ $("#signup-form").addEventListener("submit", async (e) => {
   const display_name = $("#display_name").value.trim();
   const password = $("#password").value;
   const defaultAvatar = `${location.origin}/assets/avatar.svg`;
-
+  const btn = e.submitter; btn?.setAttribute("disabled","true");
   // Validação HTML5
   const form = e.currentTarget;
   if (!form.checkValidity()) { form.reportValidity(); return; }
@@ -35,13 +35,14 @@ $("#signup-form").addEventListener("submit", async (e) => {
   } catch {
     show("error", "Validação de segurança falhou. Recarregue a página e tente novamente.");
     return;
+  } finally {
+    btn?.removeAttribute("disabled");
   }
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      data: { display_name },
       data: { display_name, avatar_url: defaultAvatar },
       emailRedirectTo: `${location.origin}/oauth-redirect.html`
     }
