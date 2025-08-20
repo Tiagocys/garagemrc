@@ -50,8 +50,8 @@ body {
     .auth-btn{padding:10px;border:0;border-radius:8px;cursor:pointer}
     .auth-btn.primary{background:#d28500;color:#fff;font-size: 1.2rem;}
     .auth-btn.google{background:#fff;border:1px solid #ddd;width: 100%;font-size: 1.2rem;}
-    .auth-msg{margin-top:10px;font-size:1.2rem}
-    .auth-msg.error{color:#b00020}
+    .auth-msg{margin-top:10px;font-size:1.2rem;background-color: #d285007a;border-radius: 5px;color: white;}
+    .auth-msg.error{margin-top:10px;font-size:1.2rem;background-color: #d200007a;border-radius: 5px;color: white;}
     .auth-signup{display: block;margin: 20px auto;text-align: center;font-size: 1.1rem;}
     .auth-signup a{color: #d28500;}
     .auth-link{color: #d28500;}
