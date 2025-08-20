@@ -1,11 +1,14 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { translateSupabaseError } from "./supabase-errors.js";
-import { getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js";
+import { ensureRecaptcha, getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js";
+
 
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
 const $ = (sel) => document.querySelector(sel);
 const msg = $("#msg");
 const SITE_KEY = window.__ENV.RECAPTCHA_SITE_KEY;
+// pré-carrega o reCAPTCHA assim que a página/JS carregar
+ensureRecaptcha(SITE_KEY).catch(() => {});
 
 function show(type, text) {
   msg.className = `msg ${type}`;

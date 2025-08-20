@@ -1,10 +1,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js";
+import { ensureRecaptcha, getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js";
 
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
 const $ = (s) => document.querySelector(s);
 const msg = $("#msg");
 const SITE_KEY = window.__ENV.RECAPTCHA_SITE_KEY;
+ensureRecaptcha(SITE_KEY).catch(() => {});
 
 function show(type, text){
   msg.className = `auth-msg ${type||""}`.trim();
