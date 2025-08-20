@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recuperar senha — GaragemRC</title>
+  <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main class="auth-wrap">
+    <h1 class="auth-title">Esqueci a senha</h1>
+    <p class="auth-muted">Informe seu e-mail. Enviaremos um link para redefinir sua senha.</p>
+
+    <form id="forgot-form" class="auth-form" autocomplete="on">
+      <input id="email" class="auth-input" type="email"
+             placeholder="Seu e-mail" required autocomplete="email" inputmode="email" spellcheck="false" />
+      <button type="submit" class="auth-btn primary">Enviar link</button>
+    </form>
+
+    <div id="msg" class="auth-msg"></div>
+  </main>
+
+  <script src="/env.js"></script>
+  <script type="module" src="/js/nav.js"></script>
+  <script type="module" src="/js/forgot.js"></script>
+</body>
+</html>

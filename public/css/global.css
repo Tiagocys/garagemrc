@@ -1,7 +1,7 @@
 :root {
   --clr-orange: #d28500;  /* light red */
   --clr-bg: #f8f9ff;
-  --clr-gray: #80746b;
+  --clr-gray: #7c756f;
   --radius: 0.75rem;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   --font-base: "Inter", sans-serif;
@@ -13,12 +13,52 @@
   box-sizing: border-box;
 }
 
+input:focus{
+  outline-color: #d28500;
+}
+
 body {
   margin: 0;
-  background-color: var(--clr-orange);
-  color: #fff;
   font-family: Arial, sans-serif;
 }
+
+/* --- LOGIN --- */
+    .auth-wrap{max-width:420px;margin:40px auto;padding:40px;border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    }
+    .auth-title{font-weight:700;font-size:2.4rem;margin:0 0 12px}
+    .auth-muted{color:#666;font-size:1rem;margin-bottom:3rem}
+    .auth-form{display:grid;gap:10px}
+    .auth-form span {
+      text-align: right;
+    }
+    .auth-form span a {text-decoration: none;font-size: 0.95rem;color: #d28500;}
+    .auth-label{font-size: 1rem; color: #666;}
+    .auth-input{padding:10px;border:1px solid #ddd;border-radius:8px;font-size: 0.95rem;}
+    .auth-btn{padding:10px;border:0;border-radius:8px;cursor:pointer}
+    .auth-btn.primary{background:#d28500;color:#fff;font-size: 1rem;}
+    .auth-btn.google{background:#fff;border:1px solid #ddd;width: 100%;font-size: 1rem;}
+    .auth-msg{margin-top:10px;font-size:.95rem}
+    .auth-msg.error{color:#b00020}
+    .auth-signup{display: block;margin: 20px auto;text-align: center;font-size: 1.1rem;}
+    .auth-signup a{color: #d28500;}
+    .auth-msg.ok{color:#0b7}
+    @media(hover:hover){.auth-btn.google:hover{background:#f7f7f7}}
+    .auth-btn.google {
+      background: transparent;
+      border: 0.5px solid #c2c2c2;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .auth-btn.google span {
+      display: block;
+      margin: auto;
+    }
+    .btn__icon {
+      width: 20px;
+      height: 20px;
+    }
 
 .grc-nav{
   position: sticky; top: 0; z-index: 50;
@@ -43,19 +83,7 @@ body {
 
 .grc-avatar{ width: 32px; height: 32px; border-radius: 50%; object-fit: cover; display: block; }
 
-/* --- LOGIN --- */
-.auth-wrap{max-width:420px;margin:40px auto;padding:24px}
-.auth-title{font-weight:700;font-size:1.4rem;margin:0 0 12px}
-.auth-muted{color:#666;font-size:.95rem;margin-bottom:12px}
-.auth-form{display:grid;gap:10px}
-.auth-input{padding:10px;border:1px solid #ddd;border-radius:8px}
-.auth-btn{padding:10px;border:0;border-radius:8px;cursor:pointer}
-.auth-btn.primary{background:#111;color:#fff}
-.auth-btn.google{background:#fff;border:1px solid #ddd;width: 100%;}
-.auth-msg{margin-top:10px;font-size:.95rem}
-.auth-msg.error{color:#b00020}
-.auth-msg.ok{color:#0b7}
-@media(hover:hover){.auth-btn.google:hover{background:#f7f7f7}}
+
 
 /* --- NAV (já existente) --- */
 /* …(seu bloco anterior permanece)… */

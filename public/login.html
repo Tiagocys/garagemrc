@@ -2,44 +2,127 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Entrar — GaragemRC</title>
-  <link rel="stylesheet" href="/css/global.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garagem</title>
+    <meta
+    name="description"
+    content="Um espaço para lojistas de veículos de todos os tamanhos."
+    />
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://xlunas.com/" />
+    <meta property="og:title"       content="Garagem — Espaço dedicado para lojistas de automóveis" />
+    <meta property="og:description" content="Um espaço para lojistas de veículos de todos os tamanhos." />
+    <meta property="og:image"       content="https://xlunas.com/assets/bg-meta.png" />
+    <meta property="og:image:type"  content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height"content="675" />
+    <meta property="og:site_name"   content="xLunas" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:url"         content="https://xlunas.com/" />
+    <meta name="twitter:title"       content="xLunas — conteúdo exclusivo para assinantes" />
+    <meta name="twitter:description" content="Assine seus criadores favoritos, descubra novos conteúdos e tenha acesso exclusivo no xLunas." />
+    <meta name="twitter:image"       content="https://xlunas.com/assets/bg-meta.png" />
+
+    <link rel="icon" href="assets/icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <title>Garagem Digital</title>
   <style>
-    .signup{
-        text-align: center;margin-top: 20px;
-        width: 100%;
-        width: auto;
-        display: flex;
-        
+    body, html {
+      height: 100%;
     }
-    .signup a {
-        text-decoration: none;
-        color: black;
-        font-size: 1rem;
-        margin: auto;
+    .login-container {
+      display: flex;
+      height: 100vh;
+    }
+    .login-left, .login-right {
+      flex: 1;
+    }
+    .login-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background-color: #d28500;
+    }
+    .login-left img {
+      max-width: 350px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    .login-slogan {
+      font-size: 1.2rem;
+    }
+    .login-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      background-color: white;
+      color: black;
+    }
+    
+    @media(max-width: 768px){
+      .login-container {
+        flex-direction: column;
+      }
+      .login-left, .login-right {
+        flex: none;
+        width: 100%;
+      }
+      .login-left {
+        height: 40vh;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="auth-wrap">
-    <h1 class="auth-title">Entrar</h1>
-    <p class="auth-muted">Acesse sua conta para anunciar e gerenciar seus veículos.</p>
-
-    <form id="login-form" class="auth-form" autocomplete="on">
-      <input id="email" class="auth-input" type="email" placeholder="Seu e-mail" required />
-      <input id="password" class="auth-input" type="password" placeholder="Senha" minlength="6" required />
-      <button type="submit" class="auth-btn primary">Entrar</button>
-    </form>
-
-    <p style="margin:10px 0;text-align:center">ou</p>
-    <button id="google-btn" class="auth-btn google">Entrar com o Google</button>
-    <div class="signup">
-        <a href="signup.html">Ainda não tenho uma conta</a> | <a href="">Esqueci a senha</a>
+  <div class="login-container">
+    <div class="login-left">
+      <img src="/assets/garagem.digital.branco.png" alt="GaragemRC" />
+      <p class="login-slogan">Um slogan bem bonitão</p>
     </div>
+    <div class="login-right">
+      <main class="auth-wrap">
+        <h1 class="auth-title">Bem-vindo!</h1>
+        <p class="auth-muted">Faça login para começar a anunciar seus veículos.</p>
 
-    <div id="msg" class="auth-msg"></div>
-  </main>
+        <form id="login-form" class="auth-form" autocomplete="on">
+          <label class="auth-label" for="email">Email</label>
+          <input id="email" class="auth-input" type="email" placeholder="Digite seu email" required />
+          <label class="auth-label" for="password">Senha</label>
+          <input id="password" class="auth-input" type="password" placeholder="Digite sua senha" minlength="6" required />
+          <span><a href="/forgot.html">Esqueceu a senha?</a></span>
+          <button type="submit" class="auth-btn primary">Entrar</button>
+        </form>
+
+        <p style="margin:10px 0;text-align:center">ou</p>
+        <button id="google-btn" class="auth-btn google">
+          <img
+            src="assets/google-icon.png"
+            alt="Google icon"
+            class="btn__icon"
+          />
+          <span>Entrar com o Google</span>
+        </button>
+        <span class="auth-signup">Ainda não tem uma conta? <a href="signup.html">Clique aqui.</a></span>
+            
+        
+
+        <div id="msg" class="auth-msg"></div>
+      </main>
+    </div>
+  </div>
 
   <script src="/env.js"></script>
   <script type="module" src="/js/nav.js"></script>
