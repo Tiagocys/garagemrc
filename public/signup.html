@@ -1,38 +1,77 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GaragemRC — Cadastre-se</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garagem Digital</title>
+    <meta
+    name="description"
+    content="Um espaço para lojistas de veículos de todos os tamanhos."
+    />
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://xlunas.com/" />
+    <meta property="og:title"       content="Garagem — Espaço dedicado para lojistas de automóveis" />
+    <meta property="og:description" content="Um espaço para lojistas de veículos de todos os tamanhos." />
+    <meta property="og:image"       content="https://xlunas.com/assets/bg-meta.png" />
+    <meta property="og:image:type"  content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height"content="675" />
+    <meta property="og:site_name"   content="xLunas" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:url"         content="https://xlunas.com/" />
+    <meta name="twitter:title"       content="xLunas — conteúdo exclusivo para assinantes" />
+    <meta name="twitter:description" content="Assine seus criadores favoritos, descubra novos conteúdos e tenha acesso exclusivo no xLunas." />
+    <meta name="twitter:image"       content="https://xlunas.com/assets/bg-meta.png" />
+
+    <link rel="icon" href="assets/icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <title>Garagem Digital</title>
   <style>
-    body{font-family:Inter,system-ui,Arial;padding:24px;max-width:420px;margin:auto}
-    h1{font-weight:700;font-size:1.4rem;margin-bottom:12px}
-    form{display:grid;gap:10px;margin-top:12px}
-    input{padding:10px;border:1px solid #ddd;border-radius:8px}
-    button{padding:10px;border:0;border-radius:8px;cursor:pointer}
-    .primary{background:#111;color:#fff}
-    .google{background:#fff;border:1px solid #ddd}
-    .muted{color:#666;font-size:.9rem}
-    .msg{margin-top:10px;font-size:.95rem}
-    .msg.error{color:#b00020}
-    .msg.ok{color:#0b7}
+    body {
+      background-color: #fff5ee;
+      background-image: url('assets/g.svg');
+      background-repeat: no-repeat;      /* não repetir */ /* canto direito (ajuste para right center se preferir) */
+      background-position-y: -50px;
+    }
   </style>
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LezRqwrAAAAANzOIoI4rBclUB_atVwKDTnIsw8R"></script>
 </head>
 <body>
-  <h1>Crie sua conta</h1>
-  <p class="muted">Cadastre-se para anunciar e acompanhar seus favoritos.</p>
+  <main class="auth-wrap">
+    <h1 class="auth-title">Crie sua conta</h1>
+    <p class="auth-muted">Cadastre-se para anunciar seus carros ou carros da sua loja.</p>
 
-  <form id="signup-form">
-    <input id="email" type="email" placeholder="Seu e-mail" required />
-    <input id="display_name" type="text" placeholder="Nome de exibição" minlength="2" maxlength="50" required />
-    <input id="password" type="password" placeholder="Senha" minlength="6" required />
-    <button class="primary" type="submit">Criar conta</button>
-  </form>
+    <form id="signup-form" class="auth-form">
+      <label class="auth-label" for="display_name">Nome de exibição</label>
+      <input class="auth-input" id="display_name" type="text" placeholder="Digite seu nome ou nome da loja" minlength="2" maxlength="50" required />
+      <label class="auth-label" for="email">Email</label>
+      <input class="auth-input" id="email" type="email" placeholder="Digite seu e-mail" required />
+      <label class="auth-label" for="password">Senha</label>
+      <input class="auth-input" id="password" type="password" placeholder="Digite sua senha" minlength="6" required />
+      <button class="auth-btn primary" type="submit" >Criar conta</button>
+    </form>
 
-  <p style="margin:10px 0;text-align:center">ou</p>
-  <button id="google-btn" class="google">Cadastre-se com o Google</button>
+    <p style="margin:10px 0;text-align:center">ou</p>
+    <button id="google-btn" class="auth-btn google">
+      <img
+        src="assets/google-icon.png"
+        alt="Google icon"
+        class="btn__icon"
+      />
+      <span>Cadastre-se com o Google</span>
+    </button>
+    <span class="auth-signup">Já tem conta? <a href="login.html">Clique aqui.</a></span>
 
-  <div id="msg" class="msg"></div>
+    <div id="msg" class="auth-msg"></div>
+  </main>
 
   <script src="/env.js"></script>
   <script type="module" src="/js/signup.js"></script>

@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { translateSupabaseError } from "./supabase-errors.js";
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
 
 const $ = (s, el=document)=>el.querySelector(s);
@@ -9,6 +10,11 @@ const msg = $("#msg");
 function showMsg(type, text){
   msg.className = `auth-msg ${type||""}`.trim();
   msg.textContent = text || "";
+}
+
+function showHTML(type, html){
+  msg.className = `auth-msg ${type||""}`.trim();
+  msg.innerHTML = html || "";
 }
 
 /**
@@ -64,7 +70,12 @@ form.addEventListener("submit", async (e) => {
   // Atualiza a senha do usuário autenticado pelo link de recuperação
   const { data, error } = await supabase.auth.updateUser({ password: p1 });
   if (error) {
-    showMsg("error", error.message || "Não foi possível redefinir a senha.");
+    const raw = String(error.message||"").toLowerCase();
+    if (/invalid.*token|token.*expired|link.*expired|link.*invalid/.test(raw)) {
+      showHTML("error", `Link inválido ou expirado. Solicite um novo link. <a href="/forgot.html" class="auth-link">Clique aqui para voltar</a>`);
+    } else {
+      showMsg("error", translateSupabaseError(error));
+    }
     return;
   }
 
@@ -75,7 +86,7 @@ form.addEventListener("submit", async (e) => {
 // Se nada habilitou o form (link inválido/expirado)
 setTimeout(() => {
   if (!ready) {
-    hint.textContent = "Link inválido ou expirado. Solicite um novo link.";
+    hint.innerHTML = `Link inválido ou expirado. Solicite um novo link. <a href="/forgot.html" class="auth-link">Clique aqui para voltar</a>`;
     form.style.display = "none";
   }
 }, 1200);

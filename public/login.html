@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Garagem</title>
+    <title>Garagem Digital</title>
     <meta
     name="description"
     content="Um espaço para lojistas de veículos de todos os tamanhos."
@@ -35,64 +35,17 @@
     <link rel="stylesheet" href="css/global.css" />
     <title>Garagem Digital</title>
   <style>
-    body, html {
-      height: 100%;
-    }
-    .login-container {
-      display: flex;
-      height: 100vh;
-    }
-    .login-left, .login-right {
-      flex: 1;
-    }
-    .login-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-      background-color: #d28500;
-    }
-    .login-left img {
-      max-width: 350px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 1rem;
-    }
-    .login-slogan {
-      font-size: 1.2rem;
-    }
-    .login-right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      background-color: white;
-      color: black;
-    }
-    
-    @media(max-width: 768px){
-      .login-container {
-        flex-direction: column;
-      }
-      .login-left, .login-right {
-        flex: none;
-        width: 100%;
-      }
-      .login-left {
-        height: 40vh;
-      }
+    body {
+      background-color: #fff5ee;
+      background-image: url('assets/g.svg');
+      background-repeat: no-repeat;      /* não repetir */ /* canto direito (ajuste para right center se preferir) */
+      background-position: right;
+      background-size: 50%;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <div class="login-left">
-      <img src="/assets/garagem.digital.branco.png" alt="GaragemRC" />
-      <p class="login-slogan">Um slogan bem bonitão</p>
-    </div>
-    <div class="login-right">
+
       <main class="auth-wrap">
         <h1 class="auth-title">Bem-vindo!</h1>
         <p class="auth-muted">Faça login para começar a anunciar seus veículos.</p>
@@ -116,16 +69,12 @@
           <span>Entrar com o Google</span>
         </button>
         <span class="auth-signup">Ainda não tem uma conta? <a href="signup.html">Clique aqui.</a></span>
-            
-        
 
         <div id="msg" class="auth-msg"></div>
       </main>
-    </div>
-  </div>
+
 
   <script src="/env.js"></script>
-  <script type="module" src="/js/nav.js"></script>
   <script type="module" src="/js/login.js"></script>
 </body>
 </html>

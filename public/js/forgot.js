@@ -7,6 +7,10 @@ function show(type, text){
   msg.className = `auth-msg ${type||""}`.trim();
   msg.textContent = text || "";
 }
+function showHTML(type, html){
+  msg.className = `auth-msg ${type||""}`.trim();
+  msg.innerHTML = html || "";
+}
 
 $("#forgot-form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -27,9 +31,9 @@ $("#forgot-form").addEventListener("submit", async (e) => {
     if (/network/i.test(error.message)) {
       show("error", "Falha de rede. Tente novamente.");
     } else {
-      show("ok", "Se houver uma conta para este e-mail, enviaremos um link para redefinir a senha.");
+      showHTML("ok", `Se houver uma conta para este e-mail, enviaremos um link para redefinir a senha. <a href="/login.html" class="auth-link">Clique aqui para voltar</a>`);
     }
     return;
   }
-  show("ok", "Se houver uma conta para este e-mail, enviaremos um link para redefinir a senha.");
+  showHTML("ok", `Se houver uma conta para este e-mail, enviaremos um link para redefinir a senha. <a href="/login.html" class="auth-link">Clique aqui para voltar</a>`);
 });

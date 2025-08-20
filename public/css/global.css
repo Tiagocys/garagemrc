@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
   --clr-orange: #d28500;  /* light red */
-  --clr-bg: #f8f9ff;
-  --clr-gray: #7c756f;
-  --radius: 0.75rem;
+  --clr-bg: #fff5ee;
+  --clr-gray: #fff5eea1;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  --font-base: "Inter", sans-serif;
 }
-
+*{
+  font-family: kanit;
+  font-weight: 300;
+}
 *,
 *::before,
 *::after {
@@ -23,26 +25,30 @@ body {
 }
 
 /* --- LOGIN --- */
-    .auth-wrap{max-width:420px;margin:40px auto;padding:40px;border-radius: 10px;
+    .auth-wrap{
+      max-width:420px;
+      background-color: white;
+      padding:40px;
+      border-bottom-right-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     }
-    .auth-title{font-weight:700;font-size:2.4rem;margin:0 0 12px}
-    .auth-muted{color:#666;font-size:1rem;margin-bottom:3rem}
+    .auth-title{font-weight:700;font-size:2.4rem;}
+    .auth-muted{color:#666;font-size:1.4rem;margin-bottom:2rem}
     .auth-form{display:grid;gap:10px}
     .auth-form span {
       text-align: right;
     }
-    .auth-form span a {text-decoration: none;font-size: 0.95rem;color: #d28500;}
-    .auth-label{font-size: 1rem; color: #666;}
-    .auth-input{padding:10px;border:1px solid #ddd;border-radius:8px;font-size: 0.95rem;}
+    .auth-form span a {text-decoration: none;font-size: 1.2rem;color: #d28500;}
+    .auth-label{font-size: 1.2rem; color: #666;}
+    .auth-input{padding:10px;border:1px solid #ddd;border-radius:8px;font-size: 1.2rem;}
     .auth-btn{padding:10px;border:0;border-radius:8px;cursor:pointer}
-    .auth-btn.primary{background:#d28500;color:#fff;font-size: 1rem;}
-    .auth-btn.google{background:#fff;border:1px solid #ddd;width: 100%;font-size: 1rem;}
-    .auth-msg{margin-top:10px;font-size:.95rem}
+    .auth-btn.primary{background:#d28500;color:#fff;font-size: 1.2rem;}
+    .auth-btn.google{background:#fff;border:1px solid #ddd;width: 100%;font-size: 1.2rem;}
+    .auth-msg{margin-top:10px;font-size:1.2rem}
     .auth-msg.error{color:#b00020}
     .auth-signup{display: block;margin: 20px auto;text-align: center;font-size: 1.1rem;}
     .auth-signup a{color: #d28500;}
-    .auth-msg.ok{color:#0b7}
+    .auth-link{color: #d28500;}
     @media(hover:hover){.auth-btn.google:hover{background:#f7f7f7}}
     .auth-btn.google {
       background: transparent;

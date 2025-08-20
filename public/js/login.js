@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { translateSupabaseError } from "./supabase-errors.js";
 
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
 const $ = (s) => document.querySelector(s);
@@ -23,14 +24,7 @@ $("#login-form").addEventListener("submit", async (e) => {
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
     // mensagens amigáveis comuns
-    const m = (error.message||"").toLowerCase();
-    if (m.includes("email not confirmed") || m.includes("confirm")) {
-      show("error", "Seu e-mail ainda não foi confirmado. Verifique sua caixa de entrada.");
-    } else if (m.includes("invalid login") || m.includes("invalid credentials")) {
-      show("error", "E-mail ou senha inválidos.");
-    } else {
-      show("error", error.message || "Erro ao entrar.");
-    }
+    show("error", translateSupabaseError(error));
     return;
   }
   show("ok", "Login realizado! Redirecionando…");

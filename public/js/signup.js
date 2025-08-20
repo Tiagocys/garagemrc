@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { translateSupabaseError } from "./supabase-errors.js";
 
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
 const $ = (sel) => document.querySelector(sel);
@@ -11,6 +12,9 @@ function show(type, text) {
 
 $("#signup-form").addEventListener("submit", async (e) => {
   e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LezRqwrAAAAANzOIoI4rBclUB_atVwKDTnIsw8R', {action: 'LOGIN'});
+    });
   show("", "");
 
   const email = $("#email").value.trim();
@@ -29,7 +33,7 @@ $("#signup-form").addEventListener("submit", async (e) => {
   });
 
   if (error) {
-    show("error", error.message || "Erro ao criar conta.");
+    show("error", translateSupabaseError(error));
     return;
   }
 
