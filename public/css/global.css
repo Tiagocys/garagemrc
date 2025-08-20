@@ -24,13 +24,19 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* --- LOGIN --- */
+/* --- LOGIN --- SIGNUP --- RESET PASSWORD --- FORGOT PASSWORD --- */
     .auth-wrap{
       max-width:420px;
-      background-color: white;
-      padding:40px;
-      border-bottom-right-radius: 10px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.747);
+      padding:5px 20px;
+      border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    }
+    @media (max-width:720px) {
+      .auth-wrap{
+        margin: auto;
+      }
     }
     .auth-title{font-weight:700;font-size:2.4rem;}
     .auth-muted{color:#666;font-size:1.4rem;margin-bottom:2rem}
@@ -65,7 +71,7 @@ body {
       width: 20px;
       height: 20px;
     }
-
+/*-------------------------------------------------------------------------------------*/
 .grc-nav{
   position: sticky; top: 0; z-index: 50;
   background: #fff;;
