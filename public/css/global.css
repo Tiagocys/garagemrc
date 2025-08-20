@@ -52,7 +52,6 @@ body {
     .auth-btn.google{background:#fff;border:1px solid #ddd;width: 100%;font-size: 1.2rem;}
     .auth-msg{margin-top:10px;font-size:1.2rem;background-color: #d285007a;border-radius: 5px; padding: 5px;}
     .auth-msg.error{margin-top:10px;font-size:1.2rem;background-color: #d200007a;border-radius: 5px; padding: 5px;}
-    #msg{margin-top:10px;font-size:1.2rem;background-color: #d285007a;border-radius: 5px; padding: 5px;}
     .auth-signup{display: block;margin: 20px auto;text-align: center;font-size: 1.1rem;}
     .auth-signup a{color: #d28500;}
     .auth-link{color: #d28500;}
