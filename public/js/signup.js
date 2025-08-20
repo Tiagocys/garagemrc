@@ -1,9 +1,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { translateSupabaseError } from "./supabase-errors.js";
+import { getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js";
 
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
 const $ = (sel) => document.querySelector(sel);
 const msg = $("#msg");
+const SITE_KEY = window.__ENV.RECAPTCHA_SITE_KEY;
 
 function show(type, text) {
   msg.className = `msg ${type}`;
@@ -12,15 +14,25 @@ function show(type, text) {
 
 $("#signup-form").addEventListener("submit", async (e) => {
   e.preventDefault();
-    grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute('6LezRqwrAAAAANzOIoI4rBclUB_atVwKDTnIsw8R', {action: 'LOGIN'});
-    });
   show("", "");
 
   const email = $("#email").value.trim();
   const display_name = $("#display_name").value.trim();
   const password = $("#password").value;
   const defaultAvatar = `${location.origin}/assets/avatar.svg`;
+
+  // Validação HTML5
+  const form = e.currentTarget;
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+
+  // reCAPTCHA v3 → action "signup"
+  try {
+    const token = await getRecaptchaToken(SITE_KEY, "signup");
+    await verifyRecaptcha(token, "signup");
+  } catch {
+    show("error", "Validação de segurança falhou. Recarregue a página e tente novamente.");
+    return;
+  }
 
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -33,7 +45,7 @@ $("#signup-form").addEventListener("submit", async (e) => {
   });
 
   if (error) {
-    show("error", translateSupabaseError(error));
+    if (error) { show("error", (translateSupabaseError?.(error)) || error.message || "Erro ao criar conta."); return; }
     return;
   }
 

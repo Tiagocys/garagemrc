@@ -1,7 +1,10 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { getRecaptchaToken, verifyRecaptcha } from "./recaptcha.js";
+
 const supabase = createClient(window.__ENV.SUPABASE_URL, window.__ENV.SUPABASE_ANON_KEY);
 const $ = (s) => document.querySelector(s);
 const msg = $("#msg");
+const SITE_KEY = window.__ENV.RECAPTCHA_SITE_KEY;
 
 function show(type, text){
   msg.className = `auth-msg ${type||""}`.trim();
@@ -19,6 +22,15 @@ $("#forgot-form").addEventListener("submit", async (e) => {
   const email = $("#email").value.trim();
   const form = e.currentTarget;
   if (!form.checkValidity()) { form.reportValidity(); return; }
+
+  // reCAPTCHA v3 → action "forgot"
+  try {
+    const token = await getRecaptchaToken(SITE_KEY, "forgot");
+    await verifyRecaptcha(token, "forgot");
+  } catch {
+    show("error", "Validação de segurança falhou. Recarregue a página e tente novamente.");
+    return;
+  }
 
   // Envia o e-mail com link; redireciona para /reset-password.html
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
