@@ -17,6 +17,7 @@ function show(type, text) {
 
 $("#signup-form").addEventListener("submit", async (e) => {
   e.preventDefault();
+  
   show("", "");
 
   const email = $("#email").value.trim();
